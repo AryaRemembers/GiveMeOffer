@@ -1,4 +1,4 @@
-package solution;
+package solution.offer;
 
 import data.TreeNode;
 import util.GenDataUtils;

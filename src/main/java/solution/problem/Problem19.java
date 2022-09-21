@@ -1,4 +1,4 @@
-package solution;
+package solution.problem;
 
 import data.ListNode;
 import util.GenDataUtils;
