@@ -54,18 +54,58 @@ public class GenDataUtils {
         return fakeHead.next;
     }
 
+    /**
+     * 生成高度为height，树节点值为【0,100)树
+     * @param height
+     * @return 树根节点
+     */
     public static TreeNode genTree(int height){
         return genTree(height,100);
     }
 
+
+    /**
+     * 生成高度为height，树节点值为【0,100)的满二叉树
+     * @param height
+     * @return 树根节点
+     */
     public static TreeNode genFullTree(int height){
         return genFullTree(height,100);
     }
 
+    private static int setValue(TreeNode root,int hasMax){
+        if(root==null) return Math.max(hasMax,1);
+        hasMax = setValue(root.left,hasMax);
+        root.val = hasMax + 1 + new Random().nextInt(5);
+        hasMax = setValue(root.right,root.val);
+        return hasMax;
+    }
+
+    /**
+     * 生成高度为height的二叉搜索树
+     * @param height 树高度
+     * @return 树根节点
+     */
+    public static TreeNode genBinarySearchTree(int height){
+        TreeNode root = genTree(height);
+        setValue(root,1);
+        return root;
+    }
+
+    /**
+     * 生成高度为height的满二叉搜索树
+     * @param height 树高度
+     * @return 树根节点
+     */
+    public static TreeNode genFullBinarySearchTree(int height){
+        TreeNode root = genFullTree(height);
+        setValue(root,1);
+        return root;
+    }
 
 
     /**
-     * generate a Tree according the str
+     * generate a Tree according to the str
      * @param str []
      * @return root node of the tree
      */
